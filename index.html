@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="th" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Application Hub | ศูนย์รวมการประยุกต์ใช้ปัญญาประดิษฐ์</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Prompt -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Prompt', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              500: '#00d2ff',
+              600: '#00aaee',
+              700: '#0077ff',
+              900: '#0b132b',
+              glow: '#00f0ff',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    .glass {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .light .glass {
+      background: rgba(255, 255, 255, 0.85);
+    }
+    /* Active Column Highlight Styling */
+    .column-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .column-card.active {
+      border-color: #00d2ff !important;
+      box-shadow: 0 0 25px rgba(0, 210, 255, 0.3);
+      transform: translateY(-4px);
+    }
+    .light .column-card.active {
+      box-shadow: 0 10px 30px rgba(0, 119, 255, 0.15);
+    }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-slate-950 transition-colors duration-300 light:bg-slate-50 light:text-slate-800" id="bodyApp">
+
+  <!-- Navigation Bar -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass border-b border-slate-800/80 light:border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center space-x-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-700 to-brand-500 flex items-center justify-center text-slate-950 font-bold shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
+          <i data-lucide="cpu" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-100 via-brand-500 to-cyan-400 light:from-slate-900 light:to-brand-700">AI Application Hub</span>
+          <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase -mt-1">Future is Now</p>
+        </div>
+      </a>
+
+      <!-- Desktop Menu -->
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+        <a href="#hero" class="hover:text-brand-500 transition-colors">หน้าแรก</a>
+        <a href="#interactive-3col" class="hover:text-brand-500 transition-colors">หมวดการประยุกต์ใช้</a>
+        <a href="#calculator" class="hover:text-brand-500 transition-colors">คำนวณเวลาที่ลดได้</a>
+      </nav>
+
+      <!-- Right Action & Theme Toggle -->
+      <div class="flex items-center space-x-4">
+        <button id="themeToggle" class="p-2.5 rounded-xl border border-slate-800 bg-slate-900/50 hover:border-slate-700 text-slate-400 hover:text-slate-100 light:border-slate-200 light:bg-slate-100 light:text-slate-700 transition-colors">
+          <i data-lucide="sun" id="sunIcon" class="w-5 h-5 hidden"></i>
+          <i data-lucide="moon" id="moonIcon" class="w-5 h-5"></i>
+        </button>
+
+        <a href="#interactive-3col" class="hidden sm:inline-flex items-center px-4 py-2 rounded-xl text-sm font-semibold text-slate-950 bg-gradient-to-r from-brand-500 to-cyan-400 hover:brightness-110 shadow-lg shadow-brand-500/20 transition-all">
+          เริ่มต้นใช้งาน
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-20">
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative py-24 md:py-32 overflow-hidden">
+      <!-- Background Ambient Glow -->
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-500 text-xs font-semibold mb-6">
+          <i data-lucide="sparkles" class="w-4 h-4"></i>
+          <span>เรียนรู้และประยุกต์ใช้ AI ในปี 2026</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-100 light:text-slate-900 leading-tight max-w-4xl mx-auto">
+          เปลี่ยนวิธีการทำงานด้วย <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-cyan-400">ปัญญาประดิษฐ์ (AI)</span>
+        </h1>
+
+        <p class="mt-6 text-lg sm:text-xl text-slate-400 light:text-slate-600 max-w-2xl mx-auto font-light">
+          ค้นพบนวัตกรรมและการประยุกต์ใช้ AI เพื่อเพิ่มประสิทธิภาพการทำงาน ต่อยอดธุรกิจ และสร้างสรรค์สิ่งใหม่ๆ ได้อย่างไร้ขีดจำกัด
+        </p>
+      </div>
+    </section>
+
+    <!-- 3-Column Interactive Section (CSS Click Change Color Menu) -->
+    <section id="interactive-3col" class="py-16 bg-slate-900/40 border-y border-slate-800/80 light:bg-slate-100/50 light:border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 light:text-slate-900">
+            เลือกหมวดหมู่การประยุกต์ใช้ AI
+          </h2>
+          <p class="text-slate-400 light:text-slate-600 mt-2 text-sm">
+            คลิกที่คอลัมน์ด้านล่างเพื่อเลือกดูรายละเอียดและเปลี่ยนธีมสีการทำงาน
+          </p>
+        </div>
+
+        <!-- 3 Columns Menu -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="columnMenu">
+          
+          <!-- Column 1 -->
+          <div data-col="1" class="column-card active cursor-pointer p-6 rounded-2xl border border-slate-800 bg-slate-900/80 hover:border-slate-700 light:bg-white light:border-slate-200 transition-all relative">
+            <div class="badge text-xs font-bold px-2.5 py-1 rounded-md bg-brand-500 text-slate-950 inline-block mb-4 transition-colors">
+              หมวดที่ 1
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-slate-800 text-brand-500 flex items-center justify-center mb-4 light:bg-slate-100">
+              <i data-lucide="briefcase" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-100 light:text-slate-900 mb-2">AI เพื่อการธุรกิจ (Business)</h3>
+            <p class="text-slate-400 light:text-slate-600 text-sm leading-relaxed">
+              วิเคราะห์ข้อมูลลูกค้า, ระบบแนะนำสินค้าอัตโนมัติ (Recommendation Systems) และระบบพาดหัวข่าว/การตลาดอัตโนมัติ
+            </p>
+          </div>
+
+          <!-- Column 2 -->
+          <div data-col="2" class="column-card cursor-pointer p-6 rounded-2xl border border-slate-800 bg-slate-900/80 hover:border-slate-700 light:bg-white light:border-slate-200 transition-all relative">
+            <div class="badge text-xs font-bold px-2.5 py-1 rounded-md bg-slate-800 text-slate-400 inline-block mb-4 transition-colors">
+              หมวดที่ 2
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-slate-800 text-brand-500 flex items-center justify-center mb-4 light:bg-slate-100">
+              <i data-lucide="palette" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-100 light:text-slate-900 mb-2">AI งานสร้างสรรค์ (Creative)</h3>
+            <p class="text-slate-400 light:text-slate-600 text-sm leading-relaxed">
+              การเจนภาพศิลปะ, การแต่งเพลง, AI ช่วยตัดต่อวิดีโอ และการเขียนสคริปต์คอนเทนต์ออนไลน์
+            </p>
+          </div>
+
+          <!-- Column 3 -->
+          <div data-col="3" class="column-card cursor-pointer p-6 rounded-2xl border border-slate-800 bg-slate-900/80 hover:border-slate-700 light:bg-white light:border-slate-200 transition-all relative">
+            <div class="badge text-xs font-bold px-2.5 py-1 rounded-md bg-slate-800 text-slate-400 inline-block mb-4 transition-colors">
+              หมวดที่ 3
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-slate-800 text-brand-500 flex items-center justify-center mb-4 light:bg-slate-100">
+              <i data-lucide="activity" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-100 light:text-slate-900 mb-2">AI ทางการแพทย์ (Healthcare)</h3>
+            <p class="text-slate-400 light:text-slate-600 text-sm leading-relaxed">
+              การวิเคราะห์ภาพถ่ายทางการแพทย์ (X-ray/MRI), การทำนายโครงสร้างโปรตีน และระบบคัดกรองผู้ป่วยเบื้องต้น
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Dynamic Content Preview Box -->
+        <div class="mt-8 p-6 rounded-2xl border border-slate-800 bg-slate-900/50 light:bg-white light:border-slate-200" id="previewBox">
+          <div class="flex items-center space-x-3 text-brand-500 font-semibold mb-2">
+            <i data-lucide="info" class="w-5 h-5"></i>
+            <span id="previewTitle">รายละเอียด: AI เพื่อการธุรกิจ</span>
+          </div>
+          <p class="text-slate-300 light:text-slate-700 text-sm leading-relaxed" id="previewDesc">
+            การนำ AI มาใช้ในองค์กรช่วยลดต้นทุนการดำเนินงานได้ถึง 30% เช่น การใช้ Chatbot ตอบลูกค้าตลอด 24 ชั่วโมง หรือการใช้ Predictive Analytics ในการวางแผนสต็อกสินค้า
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section id="calculator" class="py-20">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="p-8 rounded-3xl border border-slate-800 bg-slate-900/60 light:bg-white light:border-slate-200 shadow-2xl">
+          <h2 class="text-2xl font-bold text-slate-100 light:text-slate-900 text-center mb-6">
+            คำนวณเวลาที่ประหยัดได้ต่อสัปดาห์
+          </h2>
+
+          <div class="space-y-6">
+            <div>
+              <div class="flex justify-between text-sm font-medium mb-2">
+                <span class="text-slate-400">ชั่วโมงทำงานทั้งหมดต่อสัปดาห์:</span>
+                <span class="text-brand-500 font-bold" id="hoursVal">40 ชั่วโมง</span>
+              </div>
+              <input type="range" id="hoursInput" min="10" max="80" value="40" class="w-full accent-brand-500 cursor-pointer">
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 light:bg-slate-50 light:border-slate-200 flex items-center justify-between">
+              <span class="text-slate-300 light:text-slate-700 font-medium text-sm">เวลาที่ AI ช่วยประหยัดได้ (~35%):</span>
+              <span class="text-2xl font-extrabold text-brand-500" id="savedVal">14 ชม./สัปดาห์</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 light:border-slate-200 py-8 text-center text-slate-500 text-sm">
+    <p>© 2026 AI Application Hub. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Theme Toggle (Dark / Light)
+    const themeToggle = document.getElementById('themeToggle');
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
+    const htmlElem = document.documentElement;
+
+    themeToggle.addEventListener('click', () => {
+      htmlElem.classList.toggle('dark');
+      htmlElem.classList.toggle('light');
+      sunIcon.classList.toggle('hidden');
+      moonIcon.classList.toggle('hidden');
+    });
+
+    // 3 Columns Click Event (Change Color & Active State)
+    const columns = document.querySelectorAll('.column-card');
+    const previewTitle = document.getElementById('previewTitle');
+    const previewDesc = document.getElementById('previewDesc');
+
+    const contents = {
+      1: {
+        title: "รายละเอียด: AI เพื่อการธุรกิจ (Business)",
+        desc: "การนำ AI มาใช้ในองค์กรช่วยลดต้นทุนการดำเนินงานได้ถึง 30% เช่น การใช้ Chatbot ตอบลูกค้าตลอด 24 ชั่วโมง หรือการใช้ Predictive Analytics ในการวางแผนสต็อกสินค้า"
+      },
+      2: {
+        title: "รายละเอียด: AI งานสร้างสรรค์ (Creative)",
+        desc: "เครื่องมือ Generative AI ช่วยให้นักออกแบบและ Content Creator สามารถร่างภาพแนวคิด แต่งเพลง หรือย่อความเนื้อหาขนาดยาวได้เร็วขึ้นกว่าเดิม 5 เท่า"
+      },
+      3: {
+        title: "รายละเอียด: AI ทางการแพทย์ (Healthcare)",
+        desc: "ระบบ AI ช่วยแพทย์ตรวจจับความผิดปกติจากภาพสแกนด้วยความแม่นยำสูง ช่วยเร่งกระบวนการวินิจฉัยโรคและคิดค้นยารักษาโรคใหม่ๆ อย่างรวดเร็ว"
+      }
+    };
+
+    columns.forEach(col => {
+      col.addEventListener('click', () => {
+        // Reset all columns
+        columns.forEach(c => {
+          c.classList.remove('active');
+          const badge = c.querySelector('.badge');
+          badge.classList.remove('bg-brand-500', 'text-slate-950');
+          badge.classList.add('bg-slate-800', 'text-slate-400');
+        });
+
+        // Set active for clicked column
+        col.classList.add('active');
+        const activeBadge = col.querySelector('.badge');
+        activeBadge.classList.remove('bg-slate-800', 'text-slate-400');
+        activeBadge.classList.add('bg-brand-500', 'text-slate-950');
+
+        // Update preview content
+        const colId = col.getAttribute('data-col');
+        previewTitle.textContent = contents[colId].title;
+        previewDesc.textContent = contents[colId].desc;
+      });
+    });
+
+    // Time Saver Calculator
+    const hoursInput = document.getElementById('hoursInput');
+    const hoursVal = document.getElementById('hoursVal');
+    const savedVal = document.getElementById('savedVal');
+
+    hoursInput.addEventListener('input', (e) => {
+      const val = parseInt(e.target.value);
+      const saved = Math.round(val * 0.35);
+      hoursVal.textContent = `${val} ชั่วโมง`;
+      savedVal.textContent = `${saved} ชม./สัปดาห์`;
+    });
+  </script>
+</body>
+</html>
